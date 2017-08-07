@@ -1,7 +1,7 @@
 {
   "name": "pm2-2.x-rpc",
-  "version": "0.0.1",
-  "description": "pm2 api rpc over http",
+  "version": "0.0.2",
+  "description": "Dnode wrapper for pm2 2.x api",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha"
