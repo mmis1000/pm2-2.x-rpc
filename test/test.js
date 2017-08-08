@@ -80,19 +80,34 @@ describe('Server', function() {
                 {
                     topic: 'process:msg',
                     data: {
-                        some: 'data',
-                        hello: true
+                        msg: "hello"
                     }
                 }, 
                 function(err, res) {
-                    // console.log('message send')
                     assert(!err);
                 }
             );
             
+            pm2.sendDataToProcessId(
+                pm_id,
+                {
+                    topic: 'process:msg',
+                    data: {
+                        msg: "world"
+                    }
+                }, 
+                function(err, res) {
+                    assert(!err);
+                }
+            );
+            
+            var msgs = []
+            
             bus.on('process:msg', function(packet) {
-                assert.equal(packet.data.success, true);
-                cb();
+                msgs.push(packet.data.msg)
+                if (msgs.join(' ') === "hello world") {
+                    cb();
+                }
             });
             
             // console.log('sending to pm2 id: ' + pm_id);
