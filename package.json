@@ -1,6 +1,6 @@
 {
   "name": "pm2-2.x-rpc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Dnode wrapper for pm2 2.x api",
   "main": "index.js",
   "scripts": {
