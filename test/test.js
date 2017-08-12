@@ -21,6 +21,39 @@ describe('Server', function() {
         });
     });
     
+    describe('listen', function () {
+        it('should be able to listen to port', function (done) {
+            var server = new Server();
+            var client = dnode();
+            var tcpServer = server.listen(5000);
+            
+            tcpServer.on('listening', function () {
+                client.connect(5000);
+                client.on('remote', function (remote) {
+                    client.end();
+                    tcpServer.close();
+                    done()
+                })
+            })
+        })
+    })
+    
+    describe('connect', function () {
+        it('should be able to connect to port', function (done) {
+            var local = new Server();
+            var distServer = dnode().listen(5000);
+            
+            distServer.on('listening', function () {
+                local.connect(5000);
+                distServer.on('remote', function (remote) {
+                    local.end();
+                    distServer.close();
+                    done()
+                })
+            })
+        })
+    })
+    
     describe('methods', function () {
         var workerName = 'test_worker_' + Math.random();
         var server;
