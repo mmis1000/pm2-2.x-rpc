@@ -1,5 +1,7 @@
 # pm2-2.x-rpc
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mmis1000/pm2-2.x-rpc.svg)](https://greenkeeper.io/)
+
 Dnode wrapper for `pm2` 2.x api
 
 Usage:
